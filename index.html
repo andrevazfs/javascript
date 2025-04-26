@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    input[type="number"], input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      width: 200px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #resultado {
+      font-size: 18px;
+      color: #007bff;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      margin: 20px;
+      background-color: #ffffff;
+      text-align: center;
+      font-size: 16px;
+      line-height: 100px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      vertical-align: top;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .box:hover {
+      background-color: #ffeb3b;
+    }
+
+    .box.clicked {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <h1>1. Mensagem de Olá Mundo</h1>
+  <button onclick="mostrarMensagem()">Clique para ver 'Olá Mundo'</button>
+
+ 
+  <h1>2. Soma de 2 inteiros</h1>
+  <input type="number" id="numero1" placeholder="Digite o primeiro número">
+  <input type="number" id="numero2" placeholder="Digite o segundo número">
+  <button onclick="somaInteiros()">Clique para ver a soma</button>
+  <p id="resultado"></p> 
+
+ 
+  <h1>3. Alterar propriedade de um elemento por id</h1>
+  <p id="paragrafo">Texto original do parágrafo</p>
+  <button onclick="alterarPorId()">Alterar o texto e a cor</button>
+
+ 
+  <h1>4. Alterar propriedade de um elemento por name</h1>
+  <input type="text" name="campoTexto" value="Texto inicial">
+  <button onclick="alterarPorName()">Alterar o texto do campo</button>
+
+  
+  <h1>5. Alterar propriedade de um elemento por class</h1>
+  <div class="box" onclick="mudarCor(this)">Caixa 1</div>
+  <div class="box" onclick="mudarCor(this)">Caixa 2</div>
+  <div class="box" onclick="mudarCor(this)">Caixa 3</div>
+  <button onclick="resetarBoxes()">Resetar as caixas</button>
+
+  <script>
+   
+    function mostrarMensagem() {
+      alert("Olá Mundo");
+    }
+
+    function somaInteiros() {
+      let num1 = parseFloat(document.getElementById("numero1").value); 
+      let num2 = parseFloat(document.getElementById("numero2").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Por favor, insira dois números válidos.");
+      } else {
+        let soma = num1 + num2;
+        document.getElementById("resultado").innerText = "A soma é: " + soma; 
+      }
+    }
+
+    function alterarPorId() {
+      let paragrafo = document.getElementById("paragrafo");
+      paragrafo.style.color = "blue";
+      paragrafo.innerText = "Texto alterado pelo JavaScript!";
+    }
+
+    function alterarPorName() {
+      let campoTexto = document.getElementsByName("campoTexto")[0];
+      campoTexto.value = "Texto alterado pelo JavaScript!";
+    }
+
+    function mudarCor(elemento) {
+      elemento.classList.toggle('clicked'); 
+    }
+
+    function resetarBoxes() {
+      let boxes = document.querySelectorAll('.box');
+      boxes.forEach(box => {
+        box.classList.remove('clicked');
+      });
+    }
+  </script>
+
+</body>
+</html>
